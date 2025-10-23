@@ -5,6 +5,24 @@ import { useCursorStore } from "../../../lib/store"
 import { motion, useInView, cubicBezier } from "framer-motion"
 import { useRef } from "react"
 
+const services = [
+  { label: "Software Engineering", href: "/services/software-engineering" },
+  { label: "Database Development", href: "/services/database-development" },
+  { label: "UI & UX Design", href: "/services/ui-ux" },
+  { label: "DevOps & CI/CD", href: "/services/devops-cicd" },
+]
+
+const solutions = [
+  { label: "Web Development", href: "/solutions/web-development" },
+  { label: "Mobile App Development", href: "/solutions/mobile-apps" },
+  { label: "Expert Consulting", href: "/solutions/expert-consulting" },
+  { label: "AI & Machine Learning", href: "/solutions/ai-ml" },
+  { label: "Sprint Zero", href: "/solutions/sprint-zero" },
+  { label: "Software Modernization", href: "/solutions/modernization" },
+  { label: "Software Maintenance", href: "/solutions/maintenance" },
+  { label: "Project Takeover", href: "/solutions/project-takeover" },
+]
+
 export default function PremiumFooter() {
   const { setCursorHovered, unsetCursorHovered } = useCursorStore()
   const ref = useRef(null)
@@ -14,11 +32,8 @@ export default function PremiumFooter() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+    },
   }
 
   const itemVariants = {
@@ -26,28 +41,25 @@ export default function PremiumFooter() {
     show: {
       y: 0,
       opacity: 1,
-      transition: {
-        ease: cubicBezier(0.16, 1, 0.3, 1),
-        duration: 0.8
-      }
-    }
+      transition: { ease: cubicBezier(0.16, 1, 0.3, 1), duration: 0.8 },
+    },
   }
 
   return (
-    <footer 
+    <footer
       ref={ref}
       className="w-full px-6 lg:px-12 py-20 bg-[#070b14] text-white relative overflow-hidden border-t border-blue-900/30"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#0e1b3a] to-transparent" />
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 0.06 } : {}}
           transition={{ duration: 1.5, delay: 0.3 }}
           className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-blue-600 blur-[120px]"
         />
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 0.04 } : {}}
           transition={{ duration: 1.5, delay: 0.6 }}
@@ -56,7 +68,7 @@ export default function PremiumFooter() {
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Brand Signature */}
+        {/* Brand */}
         <motion.div
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
@@ -70,14 +82,10 @@ export default function PremiumFooter() {
               onMouseLeave={unsetCursorHovered}
               className="text-5xl md:text-7xl font-bold tracking-tighter hover:text-blue-400 transition-colors duration-500 inline-block"
             >
-              ZYNOR
-              <span className="text-blue-400">.</span>
+              ZYNOR<span className="text-blue-400">.</span>
             </Link>
           </motion.div>
-          <motion.p 
-            variants={itemVariants}
-            className="text-lg text-blue-300/70 mt-4"
-          >
+          <motion.p variants={itemVariants} className="text-lg text-blue-300/70 mt-4">
             Engineering ideas into reality
           </motion.p>
         </motion.div>
@@ -87,61 +95,100 @@ export default function PremiumFooter() {
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20"
+          className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20"
         >
-          {/* Navigation */}
+          {/* Explore */}
           <motion.div variants={itemVariants}>
             <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Explore</h3>
             <nav className="space-y-4">
-              {["Services", "Solutions", "Industries", "Work", "About", "Contact"].map((item) => (
-                <motion.div 
-                  key={item}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
+              {[
+                { label: "Services", href: "/services" },
+                { label: "Solutions", href: "/solutions" },
+                { label: "Our Work", href: "/work" },
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
+                <motion.div key={item.label} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                   <Link
-                    href={`/${item.toLowerCase()}`}
+                    href={item.href}
                     onMouseEnter={setCursorHovered}
                     onMouseLeave={unsetCursorHovered}
                     className="text-xl font-medium hover:text-blue-400 transition-colors duration-300"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </motion.div>
               ))}
             </nav>
           </motion.div>
 
-          {/* Contact */}
+          {/* Services quick links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Connect</h3>
-            <div className="space-y-6">
-              <motion.a
-                whileHover={{ x: 5 }}
-                href="mailto:hello@zynor.com"
-                onMouseEnter={setCursorHovered}
-                onMouseLeave={unsetCursorHovered}
-                className="block text-xl font-medium hover:text-blue-400 transition-colors duration-300"
-              >
-                hello@zynor.com
-              </motion.a>
-              <motion.a
-                whileHover={{ x: 5 }}
-                href="tel:+1234567890"
-                onMouseEnter={setCursorHovered}
-                onMouseLeave={unsetCursorHovered}
-                className="block text-xl font-medium hover:text-blue-400 transition-colors duration-300"
-              >
-                +1 (234) 567-890
-              </motion.a>
-            </div>
+            <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Services</h3>
+            <ul className="space-y-3">
+              {services.map((s) => (
+                <li key={s.href}>
+                  <Link
+                    href={s.href}
+                    onMouseEnter={setCursorHovered}
+                    onMouseLeave={unsetCursorHovered}
+                    className="text-base hover:text-blue-400 transition-colors duration-300"
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          {/* Social & CTA */}
+          {/* Solutions quick links */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Solutions</h3>
+            <ul className="grid grid-cols-1 gap-3">
+              {solutions.map((s) => (
+                <li key={s.href}>
+                  <Link
+                    href={s.href}
+                    onMouseEnter={setCursorHovered}
+                    onMouseLeave={unsetCursorHovered}
+                    className="text-base hover:text-blue-400 transition-colors duration-300"
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Connect */}
           <motion.div variants={itemVariants} className="space-y-8">
             <div>
-              <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Follow</h3>
-              <div className="flex flex-wrap gap-4">
+              <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Connect</h3>
+              <div className="space-y-4">
+                <motion.a
+                  whileHover={{ x: 5 }}
+                  href="mailto:hello@zynor.com"
+                  onMouseEnter={setCursorHovered}
+                  onMouseLeave={unsetCursorHovered}
+                  className="block text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+                >
+                  hello@zynor.com
+                </motion.a>
+                <motion.a
+                  whileHover={{ x: 5 }}
+                  href="tel:+1234567890"
+                  onMouseEnter={setCursorHovered}
+                  onMouseLeave={unsetCursorHovered}
+                  className="block text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+                >
+                  +1 (234) 567-890
+                </motion.a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-4">Follow</h3>
+              <div className="flex flex-wrap gap-3">
                 {["LinkedIn", "Twitter", "GitHub", "Dribbble"].map((platform) => (
                   <motion.a
                     key={platform}
@@ -160,11 +207,7 @@ export default function PremiumFooter() {
               </div>
             </div>
 
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 400, damping: 12 }}
-              className="pt-6"
-            >
+            <motion.div whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 400, damping: 12 }} className="pt-2">
               <Link
                 href="/contact"
                 onMouseEnter={setCursorHovered}
@@ -173,10 +216,7 @@ export default function PremiumFooter() {
               >
                 <span className="text-xl font-medium">Start a Project</span>
                 <motion.span
-                  animate={{
-                    x: [0, 6, 0],
-                    transition: { repeat: Infinity, duration: 2 }
-                  }}
+                  animate={{ x: [0, 6, 0], transition: { repeat: Infinity, duration: 2 } }}
                   className="text-blue-400 text-xl"
                 >
                   →
@@ -193,10 +233,16 @@ export default function PremiumFooter() {
           animate={isInView ? { opacity: 1, transition: { delay: 0.6 } } : {}}
           className="pt-8 border-t border-blue-900/50 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-blue-300/50 text-sm">© {new Date().getFullYear()} ZYNOR. All rights reserved.</p>
+          <p className="text-blue-300/50 text-sm">
+            © {new Date().getFullYear()} ZYNOR. All rights reserved.
+          </p>
           <div className="flex gap-6">
-            <a href="#" className="text-blue-300/50 hover:text-blue-400 text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-blue-300/50 hover:text-blue-400 text-sm transition-colors">Terms of Service</a>
+            <Link href="/privacy" className="text-blue-300/50 hover:text-blue-400 text-sm transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-blue-300/50 hover:text-blue-400 text-sm transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </motion.div>
       </div>
