@@ -278,17 +278,6 @@ const ZynorNavbar: React.FC<Props> = ({ transparentStart = false }) => {
                 </Link>
               </MobileAccordion>
 
-              <MobileAccordion title="Industries">
-                <ul className="space-y-2">
-                  {industries.map((it) => (
-                    <li key={it.title}>
-                      <Link href={it.href} onClick={() => setMobileOpen(false)} className="block rounded-md p-2 text-sm hover:bg-gray-50">
-                        {it.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </MobileAccordion>
 
               <div className="mt-6 space-y-3">
                 <Link href="/work" onClick={() => setMobileOpen(false)} className="block rounded-md px-2 py-2 text-base">Our work</Link>
