@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Marquee animations */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* because we doubled the strip */
+}
+@keyframes marquee-x-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee-x var(--marquee-duration, 30s) linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-x-reverse var(--marquee-duration, 30s) linear infinite;
+}
+
+/* pause on hover and respect reduced motion */
+.group:hover .animate-marquee,
+.group:hover .animate-marquee-reverse { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse { animation-duration: 0.001s; }
+}
