@@ -38,16 +38,6 @@ const solutions = [
   { title: "Project Takeover", desc: "Revitalize projects with expert guidance and execution.", href: "/solutions/project-takeover" },
 ];
 
-const industries = [
-  { title: "Automotive", desc: "Reimagining automotive experiences with innovative technology.", href: "/industries/automotive" },
-  { title: "Construction", desc: "Optimizing physical construction with digital construction.", href: "/industries/construction" },
-  { title: "E-commerce & Retail", desc: "Enhancing e-commerce & retail with software marketplaces.", href: "/industries/ecommerce-retail" },
-  { title: "Finance", desc: "Streamlining financial operations with intuitive software.", href: "/industries/finance" },
-  { title: "Healthcare", desc: "Transforming healthcare delivery with intelligent software.", href: "/industries/healthcare" },
-  { title: "Logistics", desc: "Efficient logistics management for optimized operations.", href: "/industries/logistics" },
-  { title: "Oil Gas & Energy", desc: "Better energy production and management, one Joule at a time.", href: "/industries/energy" },
-  { title: "Technology", desc: "Cutting-edge software for next-gen innovation.", href: "/industries/technology" },
-];
 
 interface Props {
   transparentStart?: boolean;
@@ -189,26 +179,7 @@ const ZynorNavbar: React.FC<Props> = ({ transparentStart = false }) => {
             </div>
           </Dropdown>
 
-          <Dropdown
-            label="Industries"
-            active={openKey === "industries"}
-            onOpen={() => { cancelClose(); setOpenKey("industries"); }}
-            onClose={scheduleClose}
-            panelClass="w-[min(100vw-2rem,520px)] p-4"
-          >
-            <div className="grid grid-cols-2 gap-2">
-              {industries.map((it) => (
-                <Link
-                  key={it.title}
-                  href={it.href}
-                  className="group rounded-md p-2 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
-                >
-                  <div className="text-sm font-medium text-gray-900">{it.title}</div>
-                  <p className="mt-1 text-[13px] leading-5 text-gray-600">{it.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </Dropdown>
+       
 
           <Link href="/work" className="px-3 py-2 text-sm text-gray-800 hover:text-gray-950">Our work</Link>
           <Link href="/about" className="px-3 py-2 text-sm text-gray-800 hover:text-gray-950">About</Link>
