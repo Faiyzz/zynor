@@ -50,7 +50,7 @@ export default function PremiumFooter() {
   return (
     <footer
       ref={ref}
-      className="w-full px-6 lg:px-12 py-20 bg-black text-white relative overflow-hidden border-t border-neutral-800"
+      className="w-full px-6 lg:px-12 py-20 bg-black text-white relative overflow-hidden "
     >
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">

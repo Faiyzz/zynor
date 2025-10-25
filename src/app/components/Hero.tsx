@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import ClientsMarquee from "./ClientsMarquee";
 import { useRef } from "react";
 
 const logos = [
@@ -20,87 +19,91 @@ const logos = [
   { src: "/logos/marriott.svg", alt: "Marriott" },
   { src: "/logos/chevron.svg", alt: "Chevron" },
 ];
-
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const yDesk = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const opacityShapes = useTransform(scrollYProgress, [0, 1], [1, 0.75]);
+  const yDesk = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const opacityShapes = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
+  const scaleImg = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
 
   return (
     <section
       ref={ref}
-      className="relative isolate overflow-hidden bg-white flex flex-col min-h-screen"
       aria-label="Hero"
+      className="relative isolate flex min-h-screen flex-col overflow-hidden bg-light text-dark"
       style={{ paddingTop: "calc(96px + env(safe-area-inset-top))" }}
     >
-      {/* CONTENT WRAPPER */}
-      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col-reverse items-center gap-10 px-4 md:grid md:grid-cols-2 md:items-center md:gap-8 md:px-6 lg:px-8">
-
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col-reverse items-center gap-10 px-4 md:grid md:grid-cols-2 md:items-center md:gap-10 md:px-6 lg:gap-16 lg:px-8">
         {/* LEFT / TEXT */}
-        <div className="w-full md:order-1 md:text-left text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
+        <div className="w-full md:order-1 text-center md:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`
-              font-bold leading-[1.05] tracking-tight text-gray-900
-              text-[2.2rem] sm:text-5xl lg:text-6xl
-              max-w-xl mx-auto md:mx-0
-            `}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center justify-center md:justify-start rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-[var(--color-accent)]"
+          >
+            CUSTOM SOFTWARE • EXPERT DELIVERY
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
+            className="mx-auto max-w-xl md:mx-0 font-bold leading-[1.05] tracking-tight text-dark text-[2.5rem] sm:text-[2.8rem] lg:text-6xl xl:text-[4rem]"
           >
             The{" "}
-            <span
-              className="font-extrabold text-[var(--color-accent)]"
-              style={{
-                WebkitTextStroke: "0.5px var(--color-accent)",
-              }}
-            >
-              right team
+            <span className="relative font-extrabold text-[var(--color-accent)]">
+              <span
+                className="relative z-[2]"
+                style={{ WebkitTextStroke: "0.5px var(--color-accent)" }}
+              >
+                right team
+              </span>
+
+              <span
+                aria-hidden
+                className="absolute left-0 top-full block h-[6px] w-full rounded-full bg-[var(--color-accent)]/30 blur-[6px]"
+              />
+              <span
+                aria-hidden
+                className="absolute left-0 top-full block h-[2px] w-full rounded-full bg-[var(--color-accent)]"
+              />
             </span>{" "}
-            is everything.
+            ships what matters.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
-            className={`
-              mt-4 max-w-xl mx-auto md:mx-0
-              text-base sm:text-lg text-gray-700
-              leading-relaxed font-semibold
-            `}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+            className="mt-5 mx-auto md:mx-0 max-w-xl text-base sm:text-lg leading-relaxed font-medium text-dark/70"
           >
             Austin-based, award-winning engineering studio delivering custom
-            software and expert witness services. We build, modernize, and
-            scale the products that move your business.
+            software and expert witness services. We build, modernize, and scale
+            the products that move your business.
           </motion.p>
 
-          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.16, ease: "easeOut" }}
-            className={`
-              mt-8 flex flex-col sm:flex-row flex-wrap
-              items-center justify-center md:justify-start
-              gap-3
-            `}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            className="mt-8 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row md:justify-start"
           >
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-[0_20px_40px_-8px_rgba(108,24,152,0.45)] transition active:scale-[.98] bg-[var(--color-accent)]"
+              className="inline-flex items-center rounded-xl bg-[var(--color-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[0_24px_48px_-8px_rgba(108,24,152,0.55)] transition active:scale-[.98] hover:shadow-[0_32px_64px_-8px_rgba(108,24,152,0.6)]"
             >
               Contact us
             </Link>
 
             <Link
               href="/about"
-              className="group inline-flex items-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 transition hover:border-gray-400"
+              className="group inline-flex items-center rounded-xl border border-[var(--color-accent)]/40 bg-white/80 px-5 py-3 text-sm font-semibold text-dark/80 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] backdrop-blur-sm transition hover:bg-[var(--color-accent)] hover:text-white hover:border-[var(--color-accent)] active:scale-[.98]"
             >
               Learn more
               <svg
@@ -120,44 +123,46 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT / MOCKUP (hidden on mobile) */}
-       {/* RIGHT / MOCKUP (hidden on mobile) */}
-<div className="w-full md:order-2 md:block hidden">
-  <div className="relative mx-auto aspect-[4/3] w-full max-w-[720px]">
-    <motion.div
-      style={{ y: yDesk, opacity: opacityShapes }}
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      className="absolute inset-x-0 bottom-0 mx-auto w-[88%] max-w-[860px] origin-bottom
-                 rounded-[22px] border-none bg-transparent backdrop-blur-0 shadow-none"
-    >
-      <div className="relative w-full overflow-visible rounded-[22px] ring-0">
-        <Image
-          src="/images/heroo.png"
-          alt="Product dashboard"
-          width={1440}
-          height={900}
-          priority
-          className="h-auto w-full object-contain"
-        />
-      </div>
-    </motion.div>
-  </div>
-</div>
-
+        {/* RIGHT / MOCKUP (PNG-friendly) */}
+        <div className="relative hidden w-full md:order-2 md:block">
+          <div className="relative mx-auto aspect-[4/3] w-full max-w-[820px] lg:max-w-[880px]">
+            {/* Accent glow behind the object */}
+            <motion.div
+              style={{ opacity: opacityShapes, y: yDesk, scale: scaleImg }}
+              className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)]/20 blur-[120px]"
+            />
+            
+            {/* PNG itself */}
+            <motion.div
+              style={{ y: yDesk, opacity: opacityShapes, scale: scaleImg }}
+              initial={{ opacity: 0, scale: 0.96, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="relative"
+            >
+              <Image
+                src="/images/heroo.png"
+                alt="Product mockup"
+                width={1600}
+                height={1000}
+                priority
+                className="w-full h-auto object-contain drop-shadow-[0_40px_70px_rgba(108,24,152,0.35)]"
+              />
+            </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* soft fade bottom */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-[88px] h-24 bg-gradient-to-b from-transparent to-white sm:bottom-[96px]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-[88px] h-24 bg-gradient-to-b from-transparent to-[var(--color-light)] sm:bottom-[96px]" />
 
-      {/* CLIENT MARQUEE */}
-      <div className="w-full bg-white">
-        <p className="mx-auto max-w-7xl px-4 pt-8 text-center text-[10px] sm:text-[11px] tracking-[0.2em] text-gray-500 md:px-6 lg:px-8 font-semibold">
+      <div className="w-full bg-light">
+      {/*   <p className="mx-auto max-w-7xl px-4 pt-10 text-center text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] text-dark/40 md:px-6 lg:px-8">
           HUNDREDS OF HAPPY CLIENTS
         </p>
-
-       {/* <div className="w-full overflow-hidden">
+             If you bring this back, it's already on-brand */}
+       
+       {/*  <div className="w-full overflow-hidden pb-12 pt-4">
           <ClientsMarquee
             logos={logos}
             speed={28}
@@ -165,7 +170,8 @@ export default function Hero() {
             grayscale
             className="mt-4"
           />
-        </div>*/}
+        </div>
+        */}
       </div>
     </section>
   );
