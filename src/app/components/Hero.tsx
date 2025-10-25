@@ -129,7 +129,7 @@ export default function Hero() {
             {/* Accent glow behind the object */}
             <motion.div
               style={{ opacity: opacityShapes, y: yDesk, scale: scaleImg }}
-              className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)]/20 blur-[120px]"
+              className="absolute left-1/2 top-1/2 h-[50px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)]/20 blur-[120px]"
             />
             
             {/* PNG itself */}
