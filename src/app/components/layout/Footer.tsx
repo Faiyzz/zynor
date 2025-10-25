@@ -5,6 +5,8 @@ import { useCursorStore } from "../../../lib/store"
 import { motion, useInView, cubicBezier } from "framer-motion"
 import { useRef } from "react"
 
+const ACCENT = "rgb(108,24,152)"
+
 const services = [
   { label: "Software Engineering", href: "/services/software-engineering" },
   { label: "Database Development", href: "/services/database-development" },
@@ -48,22 +50,32 @@ export default function PremiumFooter() {
   return (
     <footer
       ref={ref}
-      className="w-full px-6 lg:px-12 py-20 bg-[#070b14] text-white relative overflow-hidden border-t border-blue-900/30"
+      className="w-full px-6 lg:px-12 py-20 bg-black text-white relative overflow-hidden border-t border-neutral-800"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#0e1b3a] to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent" />
+
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={isInView ? { scale: 1, opacity: 0.06 } : {}}
+          animate={isInView ? { scale: 1, opacity: 0.08 } : {}}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-blue-600 blur-[120px]"
+          className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full"
+          style={{
+            background: `radial-gradient(circle, rgba(108,24,152,0.5) 0%, transparent 70%)`,
+            filter: "blur(120px)",
+          }}
         />
+
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={isInView ? { scale: 1, opacity: 0.04 } : {}}
+          animate={isInView ? { scale: 1, opacity: 0.05 } : {}}
           transition={{ duration: 1.5, delay: 0.6 }}
-          className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-indigo-500 blur-[120px]"
+          className="absolute -top-40 -left-40 w-96 h-96 rounded-full"
+          style={{
+            background: `radial-gradient(circle, rgba(108,24,152,0.4) 0%, transparent 70%)`,
+            filter: "blur(120px)",
+          }}
         />
       </div>
 
@@ -80,12 +92,15 @@ export default function PremiumFooter() {
               href="/"
               onMouseEnter={setCursorHovered}
               onMouseLeave={unsetCursorHovered}
-              className="text-5xl md:text-7xl font-bold tracking-tighter hover:text-blue-400 transition-colors duration-500 inline-block"
+              className="text-5xl md:text-7xl font-bold tracking-tighter hover:text-[rgb(108,24,152)] transition-colors duration-500 inline-block"
             >
-              ZYNOR<span className="text-blue-400">.</span>
+              ZYNOR<span className="text-[rgb(108,24,152)]">.</span>
             </Link>
           </motion.div>
-          <motion.p variants={itemVariants} className="text-lg text-blue-300/70 mt-4">
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-neutral-400 mt-4"
+          >
             Engineering ideas into reality
           </motion.p>
         </motion.div>
@@ -99,7 +114,9 @@ export default function PremiumFooter() {
         >
           {/* Explore */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Explore</h3>
+            <h3 className="text-sm text-neutral-400 uppercase tracking-widest mb-6">
+              Explore
+            </h3>
             <nav className="space-y-4">
               {[
                 { label: "Services", href: "/services" },
@@ -108,12 +125,16 @@ export default function PremiumFooter() {
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (
-                <motion.div key={item.label} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                <motion.div
+                  key={item.label}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                   <Link
                     href={item.href}
                     onMouseEnter={setCursorHovered}
                     onMouseLeave={unsetCursorHovered}
-                    className="text-xl font-medium hover:text-blue-400 transition-colors duration-300"
+                    className="text-xl font-medium hover:text-[rgb(108,24,152)] transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -124,7 +145,9 @@ export default function PremiumFooter() {
 
           {/* Services quick links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Services</h3>
+            <h3 className="text-sm text-neutral-400 uppercase tracking-widest mb-6">
+              Services
+            </h3>
             <ul className="space-y-3">
               {services.map((s) => (
                 <li key={s.href}>
@@ -132,7 +155,7 @@ export default function PremiumFooter() {
                     href={s.href}
                     onMouseEnter={setCursorHovered}
                     onMouseLeave={unsetCursorHovered}
-                    className="text-base hover:text-blue-400 transition-colors duration-300"
+                    className="text-base hover:text-[rgb(108,24,152)] transition-colors duration-300"
                   >
                     {s.label}
                   </Link>
@@ -143,7 +166,9 @@ export default function PremiumFooter() {
 
           {/* Solutions quick links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Solutions</h3>
+            <h3 className="text-sm text-neutral-400 uppercase tracking-widest mb-6">
+              Solutions
+            </h3>
             <ul className="grid grid-cols-1 gap-3">
               {solutions.map((s) => (
                 <li key={s.href}>
@@ -151,7 +176,7 @@ export default function PremiumFooter() {
                     href={s.href}
                     onMouseEnter={setCursorHovered}
                     onMouseLeave={unsetCursorHovered}
-                    className="text-base hover:text-blue-400 transition-colors duration-300"
+                    className="text-base hover:text-[rgb(108,24,152)] transition-colors duration-300"
                   >
                     {s.label}
                   </Link>
@@ -163,14 +188,16 @@ export default function PremiumFooter() {
           {/* Connect */}
           <motion.div variants={itemVariants} className="space-y-8">
             <div>
-              <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-6">Connect</h3>
+              <h3 className="text-sm text-neutral-400 uppercase tracking-widest mb-6">
+                Connect
+              </h3>
               <div className="space-y-4">
                 <motion.a
                   whileHover={{ x: 5 }}
                   href="mailto:hello@zynor.com"
                   onMouseEnter={setCursorHovered}
                   onMouseLeave={unsetCursorHovered}
-                  className="block text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+                  className="block text-lg font-medium hover:text-[rgb(108,24,152)] transition-colors duration-300"
                 >
                   hello@zynor.com
                 </motion.a>
@@ -179,7 +206,7 @@ export default function PremiumFooter() {
                   href="tel:+1234567890"
                   onMouseEnter={setCursorHovered}
                   onMouseLeave={unsetCursorHovered}
-                  className="block text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+                  className="block text-lg font-medium hover:text-[rgb(108,24,152)] transition-colors duration-300"
                 >
                   +1 (234) 567-890
                 </motion.a>
@@ -187,27 +214,35 @@ export default function PremiumFooter() {
             </div>
 
             <div>
-              <h3 className="text-blue-300 text-sm uppercase tracking-widest mb-4">Follow</h3>
+              <h3 className="text-sm text-neutral-400 uppercase tracking-widest mb-4">
+                Follow
+              </h3>
               <div className="flex flex-wrap gap-3">
-                {["LinkedIn", "Twitter", "GitHub", "Dribbble"].map((platform) => (
-                  <motion.a
-                    key={platform}
-                    whileHover={{ y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    href={`https://${platform.toLowerCase()}.com/zynor`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onMouseEnter={setCursorHovered}
-                    onMouseLeave={unsetCursorHovered}
-                    className="px-4 py-2 bg-blue-950/30 hover:bg-blue-950/50 rounded-full text-sm transition-colors duration-300 border border-blue-900/50"
-                  >
-                    {platform}
-                  </motion.a>
-                ))}
+                {["LinkedIn", "Twitter", "GitHub", "Dribbble"].map(
+                  (platform) => (
+                    <motion.a
+                      key={platform}
+                      whileHover={{ y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={`https://${platform.toLowerCase()}.com/zynor`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseEnter={setCursorHovered}
+                      onMouseLeave={unsetCursorHovered}
+                      className="px-4 py-2 bg-[#111]/50 hover:bg-[#1a1a1a] rounded-full text-sm transition-colors duration-300 border border-neutral-800"
+                    >
+                      {platform}
+                    </motion.a>
+                  )
+                )}
               </div>
             </div>
 
-            <motion.div whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 400, damping: 12 }} className="pt-2">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 400, damping: 12 }}
+              className="pt-2"
+            >
               <Link
                 href="/contact"
                 onMouseEnter={setCursorHovered}
@@ -216,12 +251,15 @@ export default function PremiumFooter() {
               >
                 <span className="text-xl font-medium">Start a Project</span>
                 <motion.span
-                  animate={{ x: [0, 6, 0], transition: { repeat: Infinity, duration: 2 } }}
-                  className="text-blue-400 text-xl"
+                  animate={{
+                    x: [0, 6, 0],
+                    transition: { repeat: Infinity, duration: 2 },
+                  }}
+                  className="text-[rgb(108,24,152)] text-xl"
                 >
                   →
                 </motion.span>
-                <span className="absolute bottom-0 left-0 w-full h-px bg-blue-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+                <span className="absolute bottom-0 left-0 w-full h-px bg-[rgb(108,24,152)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
               </Link>
             </motion.div>
           </motion.div>
@@ -230,17 +268,25 @@ export default function PremiumFooter() {
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1, transition: { delay: 0.6 } } : {}}
-          className="pt-8 border-t border-blue-900/50 flex flex-col md:flex-row justify-between items-center gap-4"
+          animate={
+            isInView ? { opacity: 1, transition: { delay: 0.6 } } : {}
+          }
+          className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-blue-300/50 text-sm">
+          <p className="text-neutral-500 text-sm">
             © {new Date().getFullYear()} ZYNOR. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-blue-300/50 hover:text-blue-400 text-sm transition-colors">
+            <Link
+              href="/privacy"
+              className="text-neutral-500 hover:text-[rgb(108,24,152)] text-sm transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-blue-300/50 hover:text-blue-400 text-sm transition-colors">
+            <Link
+              href="/terms"
+              className="text-neutral-500 hover:text-[rgb(108,24,152)] text-sm transition-colors"
+            >
               Terms of Service
             </Link>
           </div>

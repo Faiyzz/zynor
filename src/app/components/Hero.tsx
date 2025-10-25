@@ -21,11 +21,12 @@ const logos = [
   { src: "/logos/chevron.svg", alt: "Chevron" },
 ];
 
-const ACCENT = "rgb(59, 130, 246)"; // blue-500
-
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
 
   const yDesk = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const opacityShapes = useTransform(scrollYProgress, [0, 1], [1, 0.75]);
@@ -33,35 +34,50 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative isolate overflow-hidden bg-white min-h-screen flex flex-col"
+      className="relative isolate overflow-hidden bg-white flex flex-col min-h-screen"
       aria-label="Hero"
       style={{ paddingTop: "calc(96px + env(safe-area-inset-top))" }}
     >
-     
-    
+      {/* CONTENT WRAPPER */}
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col-reverse items-center gap-10 px-4 md:grid md:grid-cols-2 md:items-center md:gap-8 md:px-6 lg:px-8">
 
-      {/* Main content (centered, max-width) */}
-      <div className="relative mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-10 px-4 md:grid-cols-2 md:gap-8 md:px-6 lg:px-8">
-        {/* Left: copy */}
-        <div className="order-2 md:order-1">
+        {/* LEFT / TEXT */}
+        <div className="w-full md:order-1 md:text-left text-center">
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-xl text-4xl font-semibold leading-[1.05] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
+            className={`
+              font-bold leading-[1.05] tracking-tight text-gray-900
+              text-[2.2rem] sm:text-5xl lg:text-6xl
+              max-w-xl mx-auto md:mx-0
+            `}
           >
-            The <span className="font-extrabold">right team</span> is everything
+            The{" "}
+            <span
+              className="font-extrabold text-[var(--color-accent)]"
+              style={{
+                WebkitTextStroke: "0.5px var(--color-accent)",
+              }}
+            >
+              right team
+            </span>{" "}
+            is everything.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
-            className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg"
+            className={`
+              mt-4 max-w-xl mx-auto md:mx-0
+              text-base sm:text-lg text-gray-700
+              leading-relaxed font-semibold
+            `}
           >
-            Austin-based, award-winning engineering studio delivering custom software and
-            expert witness services. We build, modernize, and scale the products that move
-            your business.
+            Austin-based, award-winning engineering studio delivering custom
+            software and expert witness services. We build, modernize, and
+            scale the products that move your business.
           </motion.p>
 
           {/* CTAs */}
@@ -69,15 +85,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.16, ease: "easeOut" }}
-            className="mt-8 flex flex-wrap items-center gap-3"
+            className={`
+              mt-8 flex flex-col sm:flex-row flex-wrap
+              items-center justify-center md:justify-start
+              gap-3
+            `}
           >
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition active:scale-[.98]"
-              style={{ backgroundColor: ACCENT, boxShadow: "0 8px 20px rgba(59,130,246,.24)" }}
+              className="inline-flex items-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-[0_20px_40px_-8px_rgba(108,24,152,0.45)] transition active:scale-[.98] bg-[var(--color-accent)]"
             >
               Contact us
             </Link>
+
             <Link
               href="/about"
               className="group inline-flex items-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 transition hover:border-gray-400"
@@ -90,48 +110,54 @@ export default function Hero() {
                 fill="none"
                 strokeWidth="2"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </Link>
           </motion.div>
         </div>
 
-        {/* Right: floating mockup */}
-        <div className="order-1 md:order-2">
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-[720px]">
-            <motion.div
-              style={{ y: yDesk }}
-              initial={{ opacity: 0, scale: 0.98, rotate: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="absolute inset-x-0 bottom-0 mx-auto w-[88%] max-w-[860px] origin-bottom rounded-[22px] border border-gray-200/70 bg-white/90 shadow-[0_30px_80px_-20px_rgba(2,6,23,.25)] backdrop-blur"
-            >
-              <div className="relative w-full overflow-hidden rounded-[22px]">
-                <Image
-                  src="/images/desktophero.png"
-                  alt="Product dashboard"
-                  width={1440}
-                  height={900}
-                  priority
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        {/* RIGHT / MOCKUP (hidden on mobile) */}
+       {/* RIGHT / MOCKUP (hidden on mobile) */}
+<div className="w-full md:order-2 md:block hidden">
+  <div className="relative mx-auto aspect-[4/3] w-full max-w-[720px]">
+    <motion.div
+      style={{ y: yDesk, opacity: opacityShapes }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="absolute inset-x-0 bottom-0 mx-auto w-[88%] max-w-[860px] origin-bottom
+                 rounded-[22px] border-none bg-transparent backdrop-blur-0 shadow-none"
+    >
+      <div className="relative w-full overflow-visible rounded-[22px] ring-0">
+        <Image
+          src="/images/heroo.png"
+          alt="Product dashboard"
+          width={1440}
+          height={900}
+          priority
+          className="h-auto w-full object-contain"
+        />
+      </div>
+    </motion.div>
+  </div>
+</div>
+
       </div>
 
-      {/* Optional bottom fade */}
+      {/* soft fade bottom */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[88px] h-24 bg-gradient-to-b from-transparent to-white sm:bottom-[96px]" />
 
-      {/* Bottom-of-section, full-bleed marquee */}
+      {/* CLIENT MARQUEE */}
       <div className="w-full bg-white">
-        <p className="mx-auto max-w-7xl px-4 pt-8 text-center text-[11px] tracking-[0.2em] text-gray-500 md:px-6 lg:px-8">
+        <p className="mx-auto max-w-7xl px-4 pt-8 text-center text-[10px] sm:text-[11px] tracking-[0.2em] text-gray-500 md:px-6 lg:px-8 font-semibold">
           HUNDREDS OF HAPPY CLIENTS
         </p>
 
-        {/* Full width across the viewport */}
-        <div className="w-full">
+       {/* <div className="w-full overflow-hidden">
           <ClientsMarquee
             logos={logos}
             speed={28}
@@ -139,7 +165,7 @@ export default function Hero() {
             grayscale
             className="mt-4"
           />
-        </div>
+        </div>*/}
       </div>
     </section>
   );

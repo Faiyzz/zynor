@@ -40,7 +40,7 @@ export default function SoftwareEngineeringSection({
       body: "We embed with your staff through workshops, code pairing, and knowledge transfer. Expect best practices, measurable improvements to pipelines, and long-term maintainability.",
     },
   ],
-  imageSrc = "/images/office-engineering.jpg",
+  imageSrc = "/images/Software.jpg",
   imageAlt = "Engineering team collaborating in an open office",
   ...rest
 }: Props) {

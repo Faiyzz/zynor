@@ -40,7 +40,7 @@ export default function UIUXDesignSection({
       body: "Do you have a rough concept for a new product, or are you looking to overhaul outdated user experiences? Our UI/UX designers can transform your initial vision into beautiful, usable designs through iterative design. Starting with a user needs analysis, we explore multiple design concepts, validate them through rapid prototyping and testing, and continually refine them post-release. You get high-fidelity, thoroughly user-vetted UI designs and functional prototypes that bring your ideas to life better than ever imagined.",
     },
   ],
-  imageSrc = "/images/ui-ux-design.jpg",
+  imageSrc = "/images/ux.jpg",
   imageAlt = "UI/UX wireframes and design system components",
   ...rest
 }: Props) {

@@ -47,7 +47,7 @@ export default function SoftwareMaintenanceSection({
         "We help your software evolve alongside your business — as your operations, offerings, and revenues grow, so will your technology needs. With that in mind, our team is designed to walk with you every step of the way. We provide forward-looking designs and architectures built with future expansions in mind. We also offer capacity planning and performance optimization services to ensure your systems can handle increased loads as your user base expands.",
     },
   ],
-  imageSrc = "/images/software-support.jpg",
+  imageSrc = "/images/softwaremantenance.jpg",
   imageAlt = "Engineers monitoring and maintaining production systems",
   ...rest
 }: Props) {

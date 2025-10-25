@@ -40,7 +40,7 @@ export default function DevOpsCICDSection({
       body: "DevOps eliminates deployment headaches, so it's one less thing to worry about. Technology inevitably brings risks, but removing deployment variables means a more consistent user experience. Stable, scripted deployments lead to minimal downtime. We provision flexible hosting environments that dynamically scale resources based on your application's needs. Cloud infrastructure and blue/green deployment models prevent rollback issues from escalating into more serious incidents. Let us handle the DevOps so you can focus on building great products.",
     },
   ],
-  imageSrc = "/images/devops-cicd.jpg",
+  imageSrc = "/images/devops.webp",
   imageAlt = "Continuous integration and deployment pipelines visualized on screens",
   ...rest
 }: Props) {

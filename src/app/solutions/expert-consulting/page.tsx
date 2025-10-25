@@ -44,7 +44,7 @@ export default function ExpertWitnessSection({
       body: "Our expert consulting services extend beyond just inspections and testimony. We provide end-to-end support throughout the entire litigation process. From early case assessment and discovery assistance to damages analysis and settlement negotiations, our team is your trusted partner at every stage. We leverage advanced proprietary tools and methodologies to conduct thorough code and software comparisons and answer essential questions.",
     },
   ],
-  imageSrc = "/images/expert-witness.jpg",
+  imageSrc = "/images/software-consulting.jpg",
   imageAlt = "Expert reviewing source code and legal documents side by side",
   ...rest
 }: Props) {

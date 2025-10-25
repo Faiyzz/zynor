@@ -13,7 +13,7 @@ export default function ServicesShowcase() {
       {/* Row 1 */}
       <FeatureRow
         image={{
-          src: "/images/sections/analytics-laptop.png", // replace with your asset
+          src: "/images/softwareengineering.jpeg", // replace with your asset
           alt: "Analytics dashboard on laptop",
           width: 1200,
           height: 840,
@@ -29,11 +29,11 @@ export default function ServicesShowcase() {
       {/* Row 2 */}
       <FeatureRow
         image={{
-          src: "/images/sections/expert-portrait.jpg", // replace with your asset
+          src: "/images/ip.jpeg", // replace with your asset
           alt: "Expert witness headshot",
           width: 900,
           height: 1200,
-          className: "w-[360px] h-auto rounded-2xl object-cover",
+          className: "w-full max-w-[660px] h-auto",
         }}
         eyebrow=""
         title="Expert witness & IP litigation consulting"
@@ -76,7 +76,7 @@ function FeatureRow({ image, eyebrow, title, desc, href, direction = "image-left
         className="relative"
       >
         {/* gradient triangle shape behind image */}
-        <TriangleShape side={isImageLeft ? "right" : "left"} />
+       
         <div className="relative z-10">
           <Image
             src={image.src}
@@ -121,35 +121,4 @@ function FeatureRow({ image, eyebrow, title, desc, href, direction = "image-left
   );
 }
 
-function TriangleShape({ side = "right" as "left" | "right" }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={[
-        "pointer-events-none absolute -z-10",
-        side === "right" ? "left-1/2 -translate-x-10" : "right-1/2 translate-x-10",
-        "top-1/2 -translate-y-1/2",
-      ].join(" ")}
-    >
-      <svg width="320" height="320" viewBox="0 0 320 320" className="opacity-70">
-        <defs>
-          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#8A5CFF" />
-            <stop offset="50%" stopColor="#B18CFF" />
-            <stop offset="100%" stopColor="#3AC4EC" />
-          </linearGradient>
-        </defs>
-        {/* hollow triangle */}
-        <path
-          d="M160 20 L300 280 L20 280 Z"
-          fill="none"
-          stroke="url(#g)"
-          strokeWidth="26"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          opacity="0.7"
-        />
-      </svg>
-    </div>
-  );
-}
+

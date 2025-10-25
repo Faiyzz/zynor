@@ -47,7 +47,7 @@ export default function ProjectTakeoverSection({
         "Project takeovers are about setting you up for long-term success more so than fixing immediate issues. As we work on your project, we tackle technical debt as we go — that means implementing best practices in architecture, testing, and documentation. This makes future maintenance and upgrades much easier while remediating current problems. Once your software is in a stable state, we provide ongoing support and development and train your in-house team on the improved codebase and processes for a smooth handover.",
     },
   ],
-  imageSrc = "/images/project-takeover.jpg",
+  imageSrc = "/images/projectrescue.webp",
   imageAlt = "Team collaborating on rescuing a software project",
   ...rest
 }: Props) {

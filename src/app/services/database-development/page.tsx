@@ -40,7 +40,7 @@ export default function DatabaseDevelopmentSection({
       body: "We prioritize data security and compliance in all our database development projects. Our team implements best-practice security measures for storing and accessing data to protect sensitive information. We develop fine-grained access control systems and audit logging capabilities to ensure data integrity and regulatory compliance when necessary. We also engineer comprehensive backup and disaster recovery strategies to safeguard critical data and assets.",
     },
   ],
-  imageSrc = "/images/database-development.jpg",
+  imageSrc = "/images/database.jpg",
   imageAlt = "Database schemas and dashboards on screens",
   ...rest
 }: Props) {

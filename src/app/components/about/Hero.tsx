@@ -7,7 +7,7 @@ export default function HeroSection() {
     <section className="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/about-bg.jpg" // 🔁 replace with your image in /public/images/
+        src="/images/about.jpg" // 🔁 replace with your image in /public/images/
         alt="About Us Background"
         fill
         priority

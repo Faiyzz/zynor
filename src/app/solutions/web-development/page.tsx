@@ -45,7 +45,7 @@ export default function WebDevelopmentSection({
       body: "Software is an industry where cutting corners and costs leads to expensive reworks and project delays - that's why we're unwaveringly committed to quality. Our team is 100% US-based, comprised of seasoned professionals who understand the nuances of building robust, scalable web solutions. We believe in doing things right the first time, employing rigorous coding standards and meticulous attention to detail throughout the development process. We save you time and resources in the long run by minimizing the need for extensive revisions or bug fixes post-launch. With our team, you can rest easy knowing your web project is in capable hands.",
     },
   ],
-  imageSrc = "/images/web-development.jpg",
+  imageSrc = "/images/webdev.jpg",
   imageAlt = "Modern web dashboards and code on multiple screens",
   ...rest
 }: Props) {

@@ -1,5 +1,127 @@
 @import "tailwindcss";
 
+
+
+
+:root {
+  --color-accent: rgb(108, 24, 152);
+  --color-dark: #0D0D0D;
+  --color-light: #FFFFFF;
+}
+
+/* ===========================
+   Utility Color Classes
+=========================== */
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-dark {
+  background-color: var(--color-dark);
+}
+
+.bg-light {
+  background-color: var(--color-light);
+}
+
+/* ===========================
+   Accent Gradients
+=========================== */
+.bg-gradient-accent {
+  background: linear-gradient(
+    135deg,
+    rgba(108, 24, 152, 1) 0%,
+    rgba(108, 24, 152, 0.6) 50%,
+    rgba(108, 24, 152, 0.3) 100%
+  );
+}
+
+.text-gradient-accent {
+  background: linear-gradient(
+    90deg,
+    rgba(108, 24, 152, 1),
+    rgba(108, 24, 152, 0.7)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===========================
+   Accent Glow
+=========================== */
+.bg-glow-accent {
+  position: relative;
+  background: radial-gradient(
+    circle at center,
+    rgba(108, 24, 152, 0.3) 0%,
+    rgba(108, 24, 152, 0.1) 50%,
+    transparent 80%
+  );
+  filter: blur(120px);
+}
+
+/* ===========================
+   Marquee Animations
+=========================== */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-x-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x var(--marquee-duration, 30s) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-x-reverse var(--marquee-duration, 30s) linear infinite;
+}
+
+.group:hover .animate-marquee,
+.group:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation-duration: 0.001s;
+  }
+}
+
+/* ===========================
+   Background Section Helpers
+=========================== */
+.section-dark {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.section-light {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+.section-accent {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
 /* Marquee animations */
 @keyframes marquee-x {
   from { transform: translateX(0); }

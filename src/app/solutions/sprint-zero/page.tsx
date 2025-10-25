@@ -101,18 +101,18 @@ export default function SprintZeroSection({
       body: "We emerge with key priorities and a clear path forward for your team—MVP specs with estimated costs and core design concepts that form the backbone of your visual themes.",
     },
   ],
-  processImageSrc = "/images/sprint-zero-process.jpg",
+  processImageSrc = "/images/howitworks.avif",
   processImageAlt = "Stakeholder discovery meeting around a conference table",
 
   // Alternating blocks
   block1Title = "Comprehensive Project Scoping",
   block1Body = `During Sprint Zero, Eureka Software's most senior staff dive deep into your project requirements and business objectives over an intensive few weeks for a sliver of your overall budget. We conduct thorough market research, analyze competitors, and identify potential technological challenges that present opportunities and risks. This comprehensive scoping process allows us to define clear project goals by establishing realistic timelines and outlining resource requirements. As we gain a holistic understanding of your project landscape, our aim is that every subsequent development sprint is aligned with your business vision and market needs and ultimately adds incremental value.`,
-  block1ImageSrc = "/images/sprint-zero-scope.jpg",
+  block1ImageSrc = "/images/planning.jpg",
   block1ImageAlt = "Team collaborating with laptops and documents",
 
   block2Title = "Risk Mitigation and Architecture Planning",
   block2Body = `Our Sprint Zero phase places a strong emphasis on risk mitigation and architectural planning. Eureka's experienced team identifies potential obstacles and develops strategies to address them proactively. We outline a robust and scalable architecture that can accommodate future growth and technological advancements. This foresight minimizes the risk of costly mid-project changes—rest easy knowing your software is built on a solid, future-proof foundation. Our meticulous planning during Sprint Zero significantly reduces uncertainties and sets the stage for smooth project execution.`,
-  block2ImageSrc = "/images/sprint-zero-architecture.jpg",
+  block2ImageSrc = "/images/risk.webp",
   block2ImageAlt = "Whiteboard showing product roadmap and architecture notes",
 
   // Bottom line

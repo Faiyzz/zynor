@@ -47,7 +47,7 @@ export default function AISoftwareDevelopmentSection({
         "While AI and machine learning offer potent capabilities, using them for every problem is akin to using a sledgehammer on nails. Our expertise extends beyond AI to include a wide range of advanced techniques for pattern recognition and intelligent software design. Whether it means statistical analysis, rule-based systems, or advanced heuristics, these methods provide robust, explainable results with lower complexity and resource requirements than full-fledged AI systems. We choose the right level of intelligence for each task - whether it's a simple algorithm or a complex neural network - to ensure you get effective, efficient solutions tailored to your exact requirements without overengineering.",
     },
   ],
-  imageSrc = "/images/ai-lab.jpg",
+  imageSrc = "/images/aiml.jpg",
   imageAlt = "Engineers collaborating on AI models and datasets",
   ...rest
 }: Props) {

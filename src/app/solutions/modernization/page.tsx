@@ -47,7 +47,7 @@ export default function LegacyModernizationSection({
         "The goal is not only to bring your technology to modern standards - we aim to future-proof your systems by implementing continuous integration and continuous deployment (CI/CD) pipelines and automated QA to lay down the infrastructure for more development work. Our team utilizes tools like GitHub Actions and unit and functional testing to maintain consistent and repeatable deployments. We excel at improving code quality and reducing the risk of regressions during future updates over the application's life.",
     },
   ],
-  imageSrc = "/images/legacy-modernization.jpg",
+  imageSrc = "/images/softwaremodernization.jpeg",
   imageAlt = "Developers modernizing a legacy system architecture",
   ...rest
 }: Props) {

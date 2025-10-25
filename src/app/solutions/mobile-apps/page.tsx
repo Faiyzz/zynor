@@ -47,7 +47,7 @@ export default function MobileAppDevelopmentSection({
         "Launching your app is just the beginning. Eureka provides comprehensive post-launch services to ensure your app remains relevant, secure, and high-performing. Continuous monitoring, regular updates, and feature enhancements are a natural and necessary part of any living, breathing software application. We'll make your mobile app a dynamic asset that evolves with your business and user needs and maintains its competitive edge in the fast-paced software landscape.",
     },
   ],
-  imageSrc = "/images/office-engineering.jpg",
+  imageSrc = "/images/mobileappdev.jpg",
   imageAlt = "Team designing mobile app screens together",
   ...rest
 }: Props) {
